@@ -1,0 +1,33 @@
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+@import '_fonts';
+@import '_variables';
+
+@import '../components/header/header';
+@import '../components/home/characterList.scss';
+@import '../components/create-character/createCharacter.scss';
+
+hr {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  border-color: lightgrey;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+.nav {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.txt-align-center {
+  text-align: center;
+}
+
+.panel-heading {
+  font-size: 24px;
+}
+.panel-body {
+  color: darkslategrey;
+}

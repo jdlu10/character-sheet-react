@@ -1,0 +1,54 @@
+{ id: 'unique1',
+  name: 'Test',
+  condition: {
+    hitPoints: { value: 100, hidden: false },
+    tacticPoints: { value: 100, hidden: false },
+    stamina: { value: 100, hidden: false },
+    age: { value: 15, hidden: false },
+    criticalBonus: 0,
+    meleeBonus: 0,
+    tacticsBonus: 0,
+    XP: 0,
+    level: 1
+  },
+  status: {
+    class: {},
+    role: {},
+    title: []
+  },
+  resistances: {
+    melee: 0,
+    tactics: 0,
+    metal: { value: 0 },
+    wood: { value: 0 },
+    water: { value: 0 },
+    fire: { value: 0 },
+    earth: { value: 0 }
+  },
+  attributes: {
+    strength: { value: 7, hidden: false },
+    dexterity: { value: 7, hidden: false },
+    constitution: { value: 7, hidden: false },
+    intelligence: { value: 7, hidden: false },
+    wisdom: { value: 7, hidden: false },
+    charisma: { value: 7, hidden: false },
+
+    leadership: { value: 1, hidden: true },
+    integrity: { value: 1, hidden: true },
+    bravery: { value: 1, hidden: true },
+    mortality: { value: 50, hidden: true },
+    luck: { value: 1, hidden: true },
+    notoriety: { value: 0, hidden: true }
+  },
+  affinity: '',
+  sign: '',
+  traits: [],
+  equipment: {
+    weapon: {},
+    armor: {},
+    accessory1: {},
+    accessory2: {},
+    accessory3: {},
+    mount: {}
+  }
+}

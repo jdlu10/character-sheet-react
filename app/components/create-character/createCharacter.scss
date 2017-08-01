@@ -1,0 +1,68 @@
+#stats-container {
+  .attributes {
+    text-align: left;
+    line-height: 30px;
+    font-weight: 600;
+
+  }
+
+  .panel-body {
+    text-align: left;
+  }
+  .button-attributes-randomize,
+  .button-attributes-reroll,
+  .button-attributes-undo {
+    margin-left: 10px;
+    float: right;
+  }
+  .remaining {
+    font-size: 2em;
+  }
+}
+
+#stats-preview {
+  #character-name, #character-bio {
+    input, textarea {
+      width: 90%;
+    }
+    textarea {
+      resize: vertical;
+    }
+    .editable {
+      font-style: italic;
+    }
+    .updated {
+      font-style: normal;
+    }
+    .textLeft {
+      text-align: left;
+    }
+  }
+  div.progress {
+    margin-bottom: 0;
+    height: 10px;
+    .attribute-bars{
+      font-size: 10px;
+      line-height: 12px;
+      transition: width 0.6s ease, background-color 0.6s ease;
+    }
+    .progress-bar-Lamentable {
+      background-color: grey;
+    }
+    .progress-bar-Mediocre {
+      background-color: #212121;
+    }
+    .progress-bar-Adequate {
+      background-color: #43A047;
+    }
+    .progress-bar-Remarkable {
+      background-color: #1565C0;
+    }
+    .progress-bar-Exceptional {
+      background-color: #7B1FA2;
+    }
+    .progress-bar-Astonishing {
+      background-color: #FBC02D;
+    }
+  }
+}

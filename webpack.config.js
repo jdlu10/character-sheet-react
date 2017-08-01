@@ -4,23 +4,65 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './client/index.html',
+  template: './app/index.html',
   filename: 'index.html',
   inject: 'body'
-})
+});
 
 module.exports = {
-  entry: './client/index.js',
+  entry: './app/index.jsx',
   output: {
     path: path.resolve('dist'),
     filename: 'index_bundle.js'
   },
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+    rules: [
+      { test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      { test: /\.jsx$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.png$/,
+        loader: 'url?limit=100000'
+      },
+      {
+        test: /\.jpg$/,
+        loader: 'file'
+      },
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/octet-stream'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=image/svg+xml'
+      }
     ]
   },
   plugins: [HtmlWebpackPluginConfig]
-}
+};
