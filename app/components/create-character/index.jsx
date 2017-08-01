@@ -3,21 +3,37 @@
 */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col, Button, Nav, NavItem, Pager, Panel, ListGroup, ListGroupItem, Image } from 'react-bootstrap';
+import { Grid, Row, Col, Button, Nav, NavItem } from 'react-bootstrap';
 
-import CharacterName from './characterName.jsx';
-import CharacterBio from './characterBio.jsx';
-import AttributeSlider from './attributeSlider.jsx';
-import PreviewAttributeBars from './previewAttributeBars.jsx';
-import ShowTraits from './showTraits.jsx';
+import CharacterPreview from './characterPreview.jsx';
+import CharacterInfo from './characterInfo.jsx';
+import CharacterAttributes from './characterAttributes.jsx';
+import CharacterCreationPager from './pager.jsx';
 
 export default class CreateCharacter extends React.Component {
   static getRandomInt(min, max) {
     return Math.floor(Math.random() * ((max - min) + 1)) + min;
   }
-  componentDidMount() {
-    if (window.innerWidth < 992) {
-      this.statsPreviewPanel.setState({ expanded: false });
+  constructor() {
+    super();
+    this.state = {
+      stage: 1,
+      stageTotal: 5
+    };
+  }
+  gotoNextStage() {
+    if (this.state.stage < this.state.stageTotal) {
+      this.setState({ stage: this.state.stage + 1 });
+    }
+  }
+  gotoPreviousStage() {
+    if (this.state.stage > 1) {
+      this.setState({ stage: this.state.stage - 1 });
+    }
+  }
+  handleNavSelect(selectedKey) {
+    if (selectedKey >= 1 && selectedKey <= this.state.stageTotal) {
+      this.setState({ stage: selectedKey });
     }
   }
 
@@ -33,7 +49,37 @@ export default class CreateCharacter extends React.Component {
       rerollAttributes,
       setNewAttribute
     } = this.props;
-    const characterAttributes = characterBeingCreated.attributes;
+    let appStage;
+    switch (this.state.stage) {
+    case 1:
+      appStage = (
+        <CharacterInfo
+          characterBeingCreated={characterBeingCreated}
+          setCharacterName={setCharacterName}
+          setEditingNameMode={setEditingNameMode}
+          setCharacterBio={setCharacterBio}
+          setEditingBioMode={setEditingBioMode}
+        />
+      );
+      break;
+    case 2:
+      appStage = (
+        <CharacterAttributes
+          characterBeingCreated={characterBeingCreated}
+          randomAllocateAttributes={randomAllocateAttributes}
+          rerollAttributes={rerollAttributes}
+          setNewAttribute={setNewAttribute}
+        />
+      );
+      break;
+    case 3:
+      break;
+    case 4:
+      break;
+    case 5:
+      break;
+    default:
+    }
 
     return (
       <div id="create-character">
@@ -59,181 +105,59 @@ export default class CreateCharacter extends React.Component {
           <Row>
             <Col xsHidden md={1} />
             <Col xs={12} md={10}>
-              <Nav bsStyle="pills" justified activeKey={1}>
-                <NavItem eventKey={1} title="Attributes">Attributes</NavItem>
-                <NavItem eventKey={2} disabled title="Traits">Traits</NavItem>
-                <NavItem eventKey={3} disabled title="Class">Class</NavItem>
-                <NavItem eventKey={4} disabled title="Equipment">Equipment</NavItem>
+              <Nav
+                bsStyle="pills"
+                justified
+                onSelect={(selectedKey) => { this.handleNavSelect(selectedKey); }}
+              >
+                <NavItem
+                  eventKey={1}
+                  active={(this.state.stage === 1) !== false}
+                  title="Info"
+                >Info</NavItem>
+                <NavItem
+                  eventKey={2}
+                  active={(this.state.stage === 2) !== false}
+                  title="Attributes"
+                >Attributes</NavItem>
+                <NavItem
+                  eventKey={3}
+                  active={(this.state.stage === 3) !== false}
+                  title="Traits"
+                >Traits</NavItem>
+                <NavItem
+                  eventKey={4}
+                  active={(this.state.stage === 4) !== false}
+                  title="Class"
+                >Class</NavItem>
+                <NavItem
+                  eventKey={5}
+                  active={(this.state.stage === 5) !== false}
+                  title="Equipment"
+                >Equipment</NavItem>
               </Nav>
             </Col>
             <Col xsHidden md={1} />
           </Row>
           <Row>
             <Col xs={12} md={4} id="stats-preview">
-              <Panel
-                ref={
-                  (statsPreviewPanel) => { this.statsPreviewPanel = statsPreviewPanel; }
-                }
-                collapsible
-                defaultExpanded
-                header="Character Preview"
-                bsStyle="info"
-              >
-                <Image src="/assets/thumbnail.png" rounded />
-                <ListGroup fill>
-                  <ListGroupItem>
-                    <CharacterName
-                      characterBeingCreated={characterBeingCreated}
-                      setCharacterName={setCharacterName}
-                      setEditingNameMode={setEditingNameMode}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem>
-                    Strength: <PreviewAttributeBars
-                      barValue={characterAttributes.strength.value}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem>
-                    Dexterity: <PreviewAttributeBars
-                      barValue={characterAttributes.dexterity.value}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem>
-                    Constitution: <PreviewAttributeBars
-                      barValue={characterAttributes.constitution.value}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem>
-                    Wisdom: <PreviewAttributeBars
-                      barValue={characterAttributes.wisdom.value}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem>
-                    Intelligence: <PreviewAttributeBars
-                      barValue={characterAttributes.intelligence.value}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem>
-                    Charisma: <PreviewAttributeBars
-                      barValue={characterAttributes.charisma.value}
-                    />
-                  </ListGroupItem>
-                </ListGroup>
-                <CharacterBio
-                  characterBeingCreated={characterBeingCreated}
-                  setCharacterBio={setCharacterBio}
-                  setEditingBioMode={setEditingBioMode}
-                />
-              </Panel>
+              <CharacterPreview
+                characterBeingCreated={characterBeingCreated}
+              />
             </Col>
             <Col xs={12} md={8} id="stats-container">
-              <Panel header="Attributes">
-                <Button
-                  className="button-attributes-randomize"
-                  onClick={() => randomAllocateAttributes()}
-                >RANDOMIZE</Button>
-                <Button
-                  className="button-attributes-reroll"
-                  onClick={() => rerollAttributes()}
-                >REROLL</Button>
-                Use the sliders to change the attribute values.
-                Click on the &quot;REROLL&quot; button to refresh the point pool,
-                the &quot;RANDOMIZE&quot; button to auto allocate points randomly.<br />
-                <strong>Points remaining:</strong> <strong className="remaining">
-                  {characterBeingCreated.attributes.pointsRemaining}
-                </strong>
-                <ListGroup fill>
-                  <ListGroupItem className="attributes">
-                    <AttributeSlider
-                      attribute={characterAttributes.strength}
-                      label="Strength"
-                      pointsRemaining={characterBeingCreated.attributes.pointsRemaining}
-                      callback={(value) => {
-                        setNewAttribute({
-                          strength:
-                          Object.assign({}, characterAttributes.strength, { value })
-                        });
-                      }}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem className="attributes">
-                    <AttributeSlider
-                      attribute={characterAttributes.dexterity}
-                      label="Dexterity"
-                      pointsRemaining={characterBeingCreated.attributes.pointsRemaining}
-                      callback={(value) => {
-                        setNewAttribute({
-                          dexterity:
-                          Object.assign({}, characterAttributes.dexterity, { value })
-                        });
-                      }}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem className="attributes">
-                    <AttributeSlider
-                      attribute={characterAttributes.constitution}
-                      label="Constitution"
-                      pointsRemaining={characterBeingCreated.attributes.pointsRemaining}
-                      callback={(value) => {
-                        setNewAttribute({
-                          constitution:
-                          Object.assign({}, characterAttributes.constitution, { value })
-                        });
-                      }}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem className="attributes">
-                    <AttributeSlider
-                      attribute={characterAttributes.wisdom}
-                      label="Wisdom"
-                      pointsRemaining={characterBeingCreated.attributes.pointsRemaining}
-                      callback={(value) => {
-                        setNewAttribute({
-                          wisdom:
-                          Object.assign({}, characterAttributes.wisdom, { value })
-                        });
-                      }}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem className="attributes">
-                    <AttributeSlider
-                      attribute={characterAttributes.intelligence}
-                      label="Intelligence"
-                      pointsRemaining={characterBeingCreated.attributes.pointsRemaining}
-                      callback={(value) => {
-                        setNewAttribute({
-                          intelligence:
-                          Object.assign({}, characterAttributes.intelligence, { value })
-                        });
-                      }}
-                    />
-                  </ListGroupItem>
-                  <ListGroupItem className="attributes">
-                    <AttributeSlider
-                      attribute={characterAttributes.charisma}
-                      label="Charisma"
-                      pointsRemaining={characterBeingCreated.attributes.pointsRemaining}
-                      callback={(value) => {
-                        setNewAttribute({
-                          charisma:
-                          Object.assign({}, characterAttributes.charisma, { value })
-                        });
-                      }}
-                    />
-                  </ListGroupItem>
-                </ListGroup>
-                <strong>Eligible traits:</strong>
-                <ShowTraits />
-              </Panel>
+              {appStage}
             </Col>
           </Row>
           <Row>
             <Col xsHidden md={2} />
             <Col xs={12} md={8}>
-              <Pager>
-                <Pager.Item previous href="#" disabled>&larr; Previous</Pager.Item>
-                <Pager.Item next href="#" disabled>Next &rarr;</Pager.Item>
-              </Pager>
+              <CharacterCreationPager
+                stage={this.state.stage}
+                stageTotal={this.state.stageTotal}
+                nextPagerHandler={() => { this.gotoNextStage(); }}
+                previousPagerHandler={() => { this.gotoPreviousStage(); }}
+              />
             </Col>
             <Col xsHidden md={2} />
           </Row>

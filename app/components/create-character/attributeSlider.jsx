@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'rc-slider';
 import { DEFAULT_CHAR_ATTRIBUTES } from '../../constants/character.js';
+import LinkWithTooltip from '../tooltip.jsx';
 
 export default class AttributeSlider extends React.Component {
   static getAttributeLabelStyle(value) {
@@ -65,7 +66,11 @@ export default class AttributeSlider extends React.Component {
 
     return (
       <div style={attributesSliderStyle}>
-        {this.props.label}: <span className="attribute-value">
+        <LinkWithTooltip
+          tooltip={this.props.tooltip}
+          href="#"
+          id={this.props.tooltipId}
+        >{this.props.label}</LinkWithTooltip>: <span className="attribute-value">
           {this.props.attribute.value}
         </span> (
         <span style={{
@@ -129,9 +134,12 @@ AttributeSlider.propTypes = {
   }).isRequired,
   label: PropTypes.string,
   pointsRemaining: PropTypes.number,
+  tooltip: PropTypes.string,
+  tooltipId: PropTypes.string.isRequired,
   callback: PropTypes.func.isRequired
 };
 AttributeSlider.defaultProps = {
   label: 'Label',
-  pointsRemaining: 1000
+  pointsRemaining: 1000,
+  tooltip: '---'
 };

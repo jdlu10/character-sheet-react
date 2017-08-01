@@ -1,4 +1,17 @@
 #stats-container {
+  input, textarea {
+    width: 90%;
+  }
+  textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  .editable {
+    font-style: italic;
+  }
+  .updated {
+    font-style: normal;
+  }
   .attributes {
     text-align: left;
     line-height: 30px;
@@ -21,19 +34,15 @@
 }
 
 #stats-preview {
+  .list-group-item {
+    padding: 6px 12px;
+
+    .attribute-label {
+      font-size: 11px;
+      font-weight: 600;
+    }
+  }
   #character-name, #character-bio {
-    input, textarea {
-      width: 90%;
-    }
-    textarea {
-      resize: vertical;
-    }
-    .editable {
-      font-style: italic;
-    }
-    .updated {
-      font-style: normal;
-    }
     .textLeft {
       text-align: left;
     }

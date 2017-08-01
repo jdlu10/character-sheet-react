@@ -38,7 +38,8 @@
     bravery: { value: 1, hidden: true },
     mortality: { value: 50, hidden: true },
     luck: { value: 1, hidden: true },
-    notoriety: { value: 0, hidden: true }
+    notoriety: { value: 0, hidden: true },
+    pointsRemaining: 0
   },
   affinity: '',
   sign: '',
