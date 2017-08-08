@@ -3,6 +3,7 @@
 */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 import { DEFAULT_TEAM_NAME } from '../../constants/team.js';
 import TextInput from '../textInput.jsx';
 
@@ -42,6 +43,13 @@ export default function TeamName(props) {
         onDoubleClick={() => handleEdit()}
       >
         {team.name}
+        &nbsp;
+        <Button
+          className="edit-team-name-btn mobile-only"
+          onClick={() => handleEdit()}
+        >
+          EDIT
+        </Button>
       </em>
     );
   }

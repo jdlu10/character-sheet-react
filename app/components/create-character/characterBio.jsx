@@ -3,6 +3,7 @@
 */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 import { DEFAULT_CHAR_BIO } from '../../constants/character.js';
 import TextInput from '../textInput.jsx';
 
@@ -45,6 +46,13 @@ export default function CharacterBio(props) {
         onDoubleClick={() => handleEdit()}
       >
         {characterBeingCreated.bio}
+        &nbsp;
+        <Button
+          className="edit-char-name-btn mobile-only"
+          onClick={() => handleEdit()}
+        >
+          EDIT
+        </Button>
       </div>
     );
   }

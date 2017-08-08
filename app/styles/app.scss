@@ -12,8 +12,14 @@ hr {
   border-color: lightgrey;
 }
 
+h1 {
+  font-size: 2.6em;
+}
 h2 {
-  font-weight: 600;
+  font-size: 2em;
+}
+h3 {
+  font-size: 2em;
 }
 
 .nav {
@@ -26,8 +32,31 @@ h2 {
 }
 
 .panel-heading {
-  font-size: 24px;
+  font-size: 1.5em;
 }
 .panel-body {
   color: darkslategrey;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@include mobile {
+  body {
+    font-size: 3em;
+  }
+  .btn,
+  .panel-title {
+    font-size: 1em;
+  }
+  .edit-team-name-btn {
+    font-size: 0.5em;
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  .mobile-only {
+    display: inline;
+  }
 }

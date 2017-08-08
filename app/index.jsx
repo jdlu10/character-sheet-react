@@ -9,8 +9,8 @@ import characterManApp from './reducers';
 
 import Root from './root.jsx';
 
-require('./styles/app.scss');
 require('rc-slider/assets/index.css');
+require('./styles/app.scss');
 
 const store = createStore(characterManApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 

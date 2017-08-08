@@ -99,11 +99,7 @@ export default class AttributeSlider extends React.Component {
           value={this.props.attribute.value}
           trackStyle={{ backgroundColor: sliderTrackColor, height: 10 }}
           handleStyle={{
-            borderColor: sliderTrackColor,
-            height: 20,
-            width: 20,
-            marginLeft: -10,
-            marginTop: -6
+            borderColor: sliderTrackColor
           }}
           dotStyle={{
             borderColor: sliderTrackColor,
