@@ -23,11 +23,11 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js$/,
-        loader: 'babel-loader',
+        loaders: ['react-hot-loader', 'babel-loader'],
         exclude: /node_modules/
       },
       { test: /\.jsx$/,
-        loader: 'babel-loader',
+        loaders: ['react-hot-loader', 'babel-loader'],
         exclude: /node_modules/
       },
       {
@@ -40,11 +40,11 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        loader: 'url?limit=100000'
+        loader: 'url-loader?limit=100000'
       },
       {
         test: /\.jpg$/,
-        loader: 'file'
+        loader: 'file-loader'
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,

@@ -36,6 +36,7 @@ export default function CharacterBio(props) {
         onCancel={() => onCancel()}
         cssClassNames="txt-align-center"
         inputType="textarea"
+        maxlength={255}
       />
     );
   } else {
@@ -48,7 +49,8 @@ export default function CharacterBio(props) {
         {characterBeingCreated.bio}
         &nbsp;
         <Button
-          className="edit-char-name-btn mobile-only"
+          className="edit-char-name-btn"
+          bsStyle="success"
           onClick={() => handleEdit()}
         >
           EDIT

@@ -57,6 +57,7 @@ export default class TextInput extends React.Component {
         onBlur={() => this.handleCancel()}
         onChange={e => this.handleChange(e)}
         onKeyDown={e => this.handleKeyDown(e)}
+        maxLength={this.props.maxlength}
       />
     );
     const textAreaElement = (
@@ -68,6 +69,7 @@ export default class TextInput extends React.Component {
         onBlur={() => this.handleCancel()}
         onChange={e => this.handleChange(e)}
         onKeyDown={e => this.handleKeyDown(e)}
+        maxLength={this.props.maxlength}
       />
     );
     const element = (this.props.inputType === 'textarea') ? textAreaElement : textInputElement;
@@ -83,11 +85,13 @@ TextInput.propTypes = {
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   cssClassNames: PropTypes.string,
-  inputType: PropTypes.string
+  inputType: PropTypes.string,
+  maxlength: PropTypes.number
 };
 TextInput.defaultProps = {
   defaultValue: '',
   onCancel: () => () => {},
   cssClassNames: '',
-  inputType: 'button'
+  inputType: 'button',
+  maxlength: 20
 };

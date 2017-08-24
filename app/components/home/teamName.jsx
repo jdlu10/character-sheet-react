@@ -45,7 +45,8 @@ export default function TeamName(props) {
         {team.name}
         &nbsp;
         <Button
-          className="edit-team-name-btn mobile-only"
+          className="edit-team-name-btn"
+          bsStyle="success"
           onClick={() => handleEdit()}
         >
           EDIT

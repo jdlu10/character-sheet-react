@@ -47,7 +47,8 @@ export default function CharacterName(props) {
         {characterBeingCreated.name}
         &nbsp;
         <Button
-          className="edit-char-bio-btn mobile-only"
+          className="edit-char-bio-btn"
+          bsStyle="success"
           onClick={() => handleEdit()}
         >
           EDIT

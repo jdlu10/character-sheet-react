@@ -1,5 +1,6 @@
 { id: 'unique1',
   name: 'Test',
+  portraitId: 1,
   condition: {
     hitPoints: { value: 100, hidden: false },
     tacticPoints: { value: 100, hidden: false },

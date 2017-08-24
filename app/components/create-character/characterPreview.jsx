@@ -3,8 +3,9 @@
 */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel, ListGroup, ListGroupItem, Image } from 'react-bootstrap';
+import { Panel, ListGroup, ListGroupItem, Image, Table } from 'react-bootstrap';
 import { DEFAULT_CHAR_NAME, DEFAULT_CHAR_BIO } from '../../constants/character.js';
+import CHAR_PORTRAITS from '../../constants/characterPortraits.js';
 import PreviewAttributeBars from './previewAttributeBars.jsx';
 
 export default class CharacterPreview extends React.Component {
@@ -25,11 +26,29 @@ export default class CharacterPreview extends React.Component {
         header="Character Preview"
         bsStyle="info"
       >
-        <Image src="/assets/thumbnail.png" rounded />
+        <Table id="preview-info" condensed>
+          <tbody>
+            <tr>
+              <td rowSpan="5" className="preview-info-portrait">
+                <Image
+                  src={CHAR_PORTRAITS[characterBeingCreated.portraitId - 1].image}
+                  rounded
+                />
+              </td>
+              <td className="preview-info-label">Name:</td>
+              <td className="preview-info-value">{(characterBeingCreated.name === DEFAULT_CHAR_NAME) ? '---' : characterBeingCreated.name }</td>
+            </tr>
+            <tr>
+              <td className="preview-info-label">Age:</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <td className="preview-info-label">Sign:</td>
+              <td>---</td>
+            </tr>
+          </tbody>
+        </Table>
         <ListGroup fill>
-          <ListGroupItem>
-            {(characterBeingCreated.name === DEFAULT_CHAR_NAME) ? '---' : characterBeingCreated.name }
-          </ListGroupItem>
           <ListGroupItem>
             <span className="attribute-label">Strength:</span> <PreviewAttributeBars
               barValue={characterBeingCreated.attributes.strength.value}
@@ -60,8 +79,8 @@ export default class CharacterPreview extends React.Component {
               barValue={characterBeingCreated.attributes.charisma.value}
             />
           </ListGroupItem>
+          {(characterBeingCreated.bio === DEFAULT_CHAR_BIO) ? '---' : characterBeingCreated.bio }
         </ListGroup>
-        {(characterBeingCreated.bio === DEFAULT_CHAR_BIO) ? '---' : characterBeingCreated.bio }
       </Panel>
     );
   }

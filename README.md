@@ -14,6 +14,7 @@ This app uses the following open source projects:
 - [Redux](http://redux.js.org) - for state management
 - [Twitter Bootstrap](http://getbootstrap.com/) - great and accessible UI broilerplate for web apps
 - [rc-slider](http://react-component.github.io/slider/) - flexible slider library
+- [react-slick](https://github.com/akiran/react-slick) - [slick carousel](http://kenwheeler.github.io/slick/) react port
 - [Sass](http://sass-lang.com/) - superpowered css
 - [Webpack](https://webpack.js.org/) - awesome tool to bundle everything and to set up development server
 - [eslint](http://eslint.org/) - javascript and jsx linter used here with airbnb rules

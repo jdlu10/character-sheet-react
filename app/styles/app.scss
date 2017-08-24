@@ -1,4 +1,6 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css');
 @import '_fonts';
 @import '_variables';
 
@@ -41,19 +43,27 @@ h3 {
 .mobile-only {
   display: none;
 }
+.no-double-click {
+  display: inline;
+}
+
+.edit-team-name-btn {
+  font-size: 0.6em!important;
+  font-weight: bold;
+  font-style: normal;
+  padding: 0 10px;
+}
 
 @include mobile {
   body {
     font-size: 3em;
   }
+  h1, h2, h3 {
+    margin-bottom: 40px;
+  }
   .btn,
   .panel-title {
     font-size: 1em;
-  }
-  .edit-team-name-btn {
-    font-size: 0.5em;
-    font-weight: bold;
-    font-style: normal;
   }
 
   .mobile-only {

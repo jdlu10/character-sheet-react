@@ -25,6 +25,7 @@ export default function CharacterList(props) {
     <div className="character-list">
       <Button
         className="create-button"
+        bsStyle="success"
         onClick={() => props.onCreateClick()}
       >
         {createCharButtonText}

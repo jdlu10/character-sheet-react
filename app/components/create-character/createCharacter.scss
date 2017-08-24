@@ -33,13 +33,12 @@
   }
 }
 
-@include mobile {
-  .edit-char-name-btn,
-  .edit-char-bio-btn {
-    font-size: 0.5em;
-    font-weight: bold;
-    font-style: normal;
-  }
+.edit-char-name-btn,
+.edit-char-bio-btn {
+  font-size: 0.7em;
+  font-weight: bold;
+  font-style: normal;
+  padding: 2px 4px;
 }
 
 .rc-slider {
@@ -60,7 +59,39 @@
   }
 }
 
+.slick-list {
+  padding-top: 15px!important;
+  padding-bottom: 15px!important;
+  .slick-center img {
+    transform: scale(1.2);
+    transition: transform 500ms ease;
+    border: 3px solid gold;
+  }
+}
+
 #stats-preview {
+  .table {
+    margin-bottom: 0;
+    td, th {
+      border-top: 0;
+      text-align: left;
+      &.preview-info-portrait {
+        width: 20%;
+        @include mobile {
+          img {
+            width: 100%;
+          }
+        }
+      }
+      &.preview-info-label {
+        width: 15%;
+        font-weight: bold;
+      }
+      &.preview-info-value {
+        width: 65%;
+      }
+    }
+  }
   .list-group-item {
     padding: 6px 12px;
 

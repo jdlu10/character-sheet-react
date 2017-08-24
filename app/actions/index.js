@@ -25,6 +25,9 @@ export const setEditingBioMode = editing => ({
 export const setCharacterBio = newBio => ({
   type: characterActions.ASSIGN_BIO, newBio
 });
+export const setPortrait = newPortrait => ({
+  type: characterActions.ASSIGN_PORTRAIT, newPortrait
+});
 export const setCharAge = newAge => ({ type: characterActions.ASSIGN_AGE, newAge });
 export const setCharClass = newClass => ({ type: characterActions.ASSIGN_CLASS, newClass });
 export const resetAttributes = () => ({ type: characterActions.RESET_ATTRIBUTES });

@@ -2,6 +2,7 @@ export const SET_EDIT_NAME_MODE = 'SET_EDIT_NAME_MODE';
 export const ASSIGN_NAME = 'ASSIGN_NAME';
 export const SET_EDIT_BIO_MODE = 'SET_EDIT_BIO_MODE';
 export const ASSIGN_BIO = 'ASSIGN_BIO';
+export const ASSIGN_PORTRAIT = 'ASSIGN_PORTRAIT';
 export const ASSIGN_AGE = 'ASSIGN_AGE';
 export const ASSIGN_CLASS = 'ASSIGN_CLASS';
 export const ASSIGN_ATTRIBUTE = 'ASSIGN_ATTRIBUTE';

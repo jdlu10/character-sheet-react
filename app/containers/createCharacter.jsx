@@ -3,6 +3,7 @@ import {
   backToMain,
   setEditingNameMode,
   setCharacterName,
+  setPortrait,
   setEditingBioMode,
   setCharacterBio,
   setCharAttribute,
@@ -39,6 +40,9 @@ const mapDispatchToProps = dispatch => ({
   },
   setNewAttribute: (newAttribute) => {
     dispatch(setCharAttribute(newAttribute));
+  },
+  setPortrait: (portraitId) => {
+    dispatch(setPortrait(portraitId));
   }
 });
 

@@ -45,6 +45,7 @@ export default class CreateCharacter extends React.Component {
       setEditingNameMode,
       setCharacterBio,
       setEditingBioMode,
+      setPortrait,
       randomAllocateAttributes,
       rerollAttributes,
       setNewAttribute
@@ -59,6 +60,7 @@ export default class CreateCharacter extends React.Component {
           setEditingNameMode={setEditingNameMode}
           setCharacterBio={setCharacterBio}
           setEditingBioMode={setEditingBioMode}
+          setPortrait={setPortrait}
         />
       );
       break;
@@ -97,6 +99,7 @@ export default class CreateCharacter extends React.Component {
               <p>
                 <Button
                   className="create-button"
+                  bsStyle="danger"
                   onClick={() => onBackToMainClick()}
                 >BACK TO LIST</Button>
               </p>
@@ -175,6 +178,7 @@ CreateCharacter.propTypes = {
   setEditingNameMode: PropTypes.func.isRequired,
   setCharacterBio: PropTypes.func.isRequired,
   setEditingBioMode: PropTypes.func.isRequired,
+  setPortrait: PropTypes.func.isRequired,
   rerollAttributes: PropTypes.func,
   randomAllocateAttributes: PropTypes.func
 };

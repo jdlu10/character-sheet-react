@@ -31,7 +31,7 @@ export default class AttributeSlider extends React.Component {
       1: {},
       41: {
         style: {
-          color: 'grey'
+          color: 'gray'
         }
       },
       61: {

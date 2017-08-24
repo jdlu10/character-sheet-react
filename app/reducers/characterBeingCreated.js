@@ -32,6 +32,7 @@ const baseAttributesCopy = JSON.parse(JSON.stringify(baseAttributes));
 const baseCharacterObject = { id: 'unique1',
   name: DEFAULT_CHAR_NAME,
   bio: DEFAULT_CHAR_BIO,
+  portraitId: 1,
   creationInProgress: false,
   editingName: false,
   editingBio: false,
@@ -90,6 +91,14 @@ const assignName = (state = initialState.name, action) => {
   switch (action.type) {
   case characterActions.ASSIGN_NAME:
     return action.newName;
+  default:
+    return state;
+  }
+};
+const assignPortrait = (state = initialState.portraitId, action) => {
+  switch (action.type) {
+  case characterActions.ASSIGN_PORTRAIT:
+    return action.newPortrait;
   default:
     return state;
   }
@@ -201,6 +210,7 @@ function characterBeingCreated(state = initialState, action) {
   default:
     return {
       name: assignName(state.name, action),
+      portraitId: assignPortrait(state.portraitId, action),
       bio: assignBio(state.bio, action),
       editingName: setEditingNameMode(state.editingName, action),
       editingBio: setEditingBioMode(state.editingBio, action),
